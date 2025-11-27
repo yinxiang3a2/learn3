@@ -1,57 +1,52 @@
-# 天气预报安卓应用
+# 🌦️ 1. 城市天气预报应用 (Weather Forecast App)
 
-一个简单的安卓应用程序，用于显示特定城市的天气预报。
+这是一个基于高德地图开放平台 API 开发的 Android 城市天气预报应用。项目使用了现代 Android 开发技术栈，旨在提供一个美观、流畅且实用的天气查询体验。
 
-## 📖 描述
+---
 
-本应用从高德地图Web服务API获取天气数据并呈现给用户。它会显示当前城市以及未来几天的天气预报列表，包括日期、白天/夜间温度和天气状况。
+# ✨ 2. 主要功能
 
-## ✨ 功能
+* **城市天气展示**：自动获取并显示指定城市的名称和天气信息
+* **多日预报**：展示未来几天的详细天气预报，包括日期、星期、天气状况和温度范围
+* **下拉刷新 (Pull-to-Refresh)**：随时下拉更新最新天气数据
+* **网络状态检测**：启动时检查网络连接，并在无网络时给出友好提示
 
-- 显示未来的天气预报列表。
-- 显示预报对应的城市名称。
-- 处理没有网络连接时的情况。
-- 获取数据时显示加载指示器。
+---
 
-## 🛠️ 技术栈
+# 🎨 3. 应用界面 (UI/UX) 特点
 
-- **语言:** [Kotlin](https://kotlinlang.org/)
-- **框架:** 原生安卓SDK
-- **网络请求:** [Retrofit](https://square.github.io/retrofit/) & [OkHttp](https://square.github.io/okhttp/)
-- **UI:** [RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview) 用于显示列表。
-- **架构:** 基于单个Activity的简单结构。
+* **沉浸式设计**：采用渐变背景，内容延伸至状态栏
+* **卡片式布局 (CardView)**：圆角、半透明卡片让界面更美观
+* **Loading 动画**：优雅的加载过渡效果
 
-## 🚀 安装与运行
+---
 
-要构建和运行此项目，请按照以下步骤操作：
+# 🚀 4. 如何运行项目
 
-1.  **克隆仓库:**
-    ```bash
-    git clone https://github.com/cjh031116/Third.git
-    ```
-2.  **在Android Studio中打开:**
-    在Android Studio中打开克隆的目录，等待Gradle同步项目。
+### 1. 获取 API Key
 
-3.  **获取高德API密钥:**
-    本项目使用高德地图Web服务API来获取天气数据。您需要获取自己的免费API密钥。
-    - 前往 [高德开放平台控制台](https://console.amap.com/)。
-    - 创建一个新应用并添加一个新Key。
-    - 选择“Web服务”作为服务平台。
-    - 您的API密钥将会生成。
+从高德开放平台申请 Key。
 
-4.  **将API密钥添加到项目中:**
-    - 打开 `app/src/main/java/com/example/weather/MainActivity.kt` 文件。
-    - 找到以下代码行：
-      ```kotlin
-      val apiKey = "YOUR_API_KEY" 
-      ```
-    - 将其替换为您在上一步中获取的密钥。
+### 2. 配置 API
 
-5.  **运行应用:**
-    在安卓模拟器或物理设备上构建并运行该应用。
+将你的 API Key 配置。
 
-## 📝 注意
+### 3. 安装依赖
 
-目前，城市在 `MainActivity.kt` 中被硬编码为“北京”（城市代码 `110101`）。您可以更改 `getWeather` API调用中的 `city` 参数，以显示不同城市的天气预报。
+确保你的 **build.gradle.kts (Module: app)** 文件中包含以下依赖：
 
+```kotlin
+dependencies {
+    // UI / 组件库
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("androidx.cardview:cardview:1.0.0")
 
+    // 网络请求
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // ... 其他默认依赖 ...
+}
+```
+
+> **注意**：添加依赖后，记得点击 **Sync Now** 同步项目。
